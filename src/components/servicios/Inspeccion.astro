@@ -1,0 +1,46 @@
+---
+import { inspect } from "@constants/servicios";
+import SubTitle from "@components/shared/SubTitle.astro";
+---
+
+<section class="py-10">
+  <div
+    class="flex flex-col justify-center md:items-start md:text-left text-center"
+  >
+    <span class="text-rose-500 text-2xl md:text-4xl font-bold">
+      INSPECCIÓN FÍSICO MECÁNICA Y DE SEGURIDAD:
+    </span>
+    <p class="my-2 text-lg text-slate-800 prose-xl">
+      En este tipo de verificación se realiza una revisión ocular y de medición
+      muy detallada de sus componentes a la unidad de autotransporte. Algunos de
+      los componentes son:
+    </p>
+  </div>
+
+  <!-- Se define un tamaño mínimo para cada item del map() -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 my-8">
+    {
+      inspect.map((item) => (
+        <div class=" px-8 my-8 border-b flex flex-col justify-center place-content-center  border-slate-400   ">
+          <SubTitle title={item.title} />
+          <p class="py-2 px-6 text-slate-800 prose-xl mb-4">{item.body}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <div
+    class="flex flex-col justify-center md:items-start md:text-left text-center px-8"
+  >
+    <p class="my-2 text-lg text-slate-800 prose-xl">
+      Estos son algunos de los componentes que se revisan en la verificación de
+      condiciones físico mecánicas conforme a lo establecido en la norma oficial
+      068 SCT 2014.
+    </p>
+    <p class="my-2 text-lg text-slate-800 prose-xl">
+      Una vez ya verificados los criterios que establece la norma 068, si su
+      unidad es APROBADA se emite la constancia de que su unidad cumple con los
+      criterios establecidos en la NOM 068 SCT 2 2014.
+    </p>
+  </div>
+</section>

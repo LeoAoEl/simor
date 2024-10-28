@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+interface Props {
+  title: string;
+  body: string;
+  imageSrc: ImageMetadata;
+  href: string;
+}
+const { title, imageSrc, body, href } = Astro.props;
+---
+
+<section
+  class="flex flex-col p-8 shadow-lg rounded-lg md:aspect-video bg-gradient-to-t from-primary to-colorBackGround hover:scale-105 transition-all ease-in-out duration-300 hover:shadow-2xl hover:drop-shadow-2xl"
+>
+  <div class="flex flex-col items-center justify-items-center">
+    <Image
+      src={imageSrc}
+      alt={title}
+      class="rounded-lg max-h-40 w-auto"
+      loading={"eager"}
+      quality={"low"}
+    />
+    <span class="text-3xl font-bold text-textPrimary py-4 text-center"
+      >{title}</span
+    >
+    <p class="text-textPrimary text-lg text-center">{body}</p>
+  </div>
+  <a
+    aria-label="Contactar con nosotros por whatsapp"
+    target="_blank"
+    class="hover:bg-secondary mx-auto border border-secondary rounded-lg p-4 font-bold text-secondary my-2 hover:text-white transition-all ease-in-out"
+    href={href}>Contáctanos</a
+  >
+</section>

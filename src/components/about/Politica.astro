@@ -1,0 +1,37 @@
+---
+import { normas } from "@constants/about";
+import { Image } from "astro:assets";
+import image1 from "@assets/SCT_logo.avif";
+import image2 from "@assets/SEMARNAT_logo.avif";
+const images = [
+  { img: image1, alt: "SCT" },
+  { img: image2, alt: "Semart" },
+];
+---
+
+<section class="py-10">
+  <div
+    class="flex flex-col justify-center md:items-start md:text-left text-center"
+  >
+    <span class="text-rose-500 text-2xl md:text-4xl font-bold">NORMAS</span>
+    <p class="my-2 text-lg text-slate-800 prose-xl">
+      Normas bajo las cuales realizamos las verificaciones:
+    </p>
+  </div>
+
+  <!-- <aside
+    class="grid md:grid-cols-2 grid-cols-1 gap-4 items-center justify-center"
+  >
+    {images.map((item) => <Image src={item.img} alt={item.alt} />)}
+  </aside> -->
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {
+      normas.map((item) => (
+        <div class=" px-8 my-8 border-b border-slate-400 pb-4  ">
+          <p class=" py-2 px-6 text-slate-800 prose-xl">{item}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

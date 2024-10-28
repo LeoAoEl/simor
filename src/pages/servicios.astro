@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Title from "@components/shared/Title.astro";
+import Container from "@components/shared/Container.astro";
+import Inspeccion from "@components/servicios/Inspeccion.astro";
+import Requisitos from "@components/servicios/Requisitos.astro";
+import Verifi from "@components/servicios/Verifi.astro";
+import Tablas from "@components/servicios/Tablas.astro";
+import SmallSwipper from "@components/SmallSwipper";
+---
+
+<Layout title="Servicios" url="/servicios/">
+  <Container>
+    <Title title="NUESTROS SERVICIOS" />
+
+    <div class="flex flex-col items-center justify-center mt-4">
+      <span class="text-slate-800 prose-2xl text-center"
+        >Nuestro centro especializado de verificación ofrece los siguientes
+        servicios:
+      </span>
+    </div>
+    <SmallSwipper imageFolder="info" client:visible />
+    <Inspeccion />
+    <Requisitos />
+    <Verifi />
+    <Tablas />
+  </Container>
+</Layout>

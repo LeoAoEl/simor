@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Title from "@components/shared/Title.astro";
+import Container from "@components/shared/Container.astro";
+import Politica from "@components/about/Politica.astro";
+import Normas from "@components/about/Normas.astro";
+import VerificacionTabla from "@components/about/VerificacionTabla.astro";
+import InfiniteScroll from "@components/about/InfiniteScroll.astro";
+---
+
+<Layout title="Acerca de" url="/about/">
+  <Container>
+    <Title title="SOBRE NOSOTROS" />
+    <div class="flex flex-col items-center justify-center mt-4">
+      <span class="text-slate-800 prose-2xl text-center"
+        >Sistemas de Verificación MOR, es una unidad de verificación de
+        emisiones contaminantes, Inspecciones físico-mecánicas y de Seguridad.
+      </span>
+      <InfiniteScroll imageFolder="info" />
+      <Normas />
+      <Politica />
+      <VerificacionTabla />
+    </div>
+  </Container>
+</Layout>

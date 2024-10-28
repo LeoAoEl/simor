@@ -1,0 +1,26 @@
+---
+import { requisitos } from "@constants/servicios";
+---
+
+<section id="requisitos" class="py-10">
+  <div
+    class="flex flex-col justify-center md:items-start md:text-left text-center"
+  >
+    <span class="text-rose-500 text-2xl md:text-4xl font-bold">REQUISITOS</span>
+    <p class="my-2 text-lg text-slate-800 prose-xl">
+      Para poder realizar su verificación físico mecánica en unidades de más de
+      2 años de antigüedad necesita contar con:
+    </p>
+  </div>
+  {
+    requisitos.map((item) => (
+      <div class=" my-8 border-b border-slate-400 pb-4 ">
+        <div class=" px-8">
+          <p class=" py-2 px-6 text-slate-800 prose-xl">{item.sub1}</p>
+          <p class=" py-2 px-6 text-slate-800 prose-xl">{item.sub2}</p>
+        </div>
+        <span class="text-slate-800 prose-xl">{item.note}</span>
+      </div>
+    ))
+  }
+</section>

@@ -1,0 +1,42 @@
+---
+import Navbar from "@components/Navbar.astro";
+import Footer from "@components/Footer.astro";
+import { ViewTransitions } from "astro:transitions";
+import ScrollToTopButton from "@components/shared/ScrollButton";
+import { SEO } from "@constants/seo";
+interface Props {
+  title: string;
+  url: string;
+}
+
+const { title, url } = Astro.props;
+const { description, keyWords } = SEO;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/Logo.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="og:type" content="website" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keyWords} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={"/simorLogo.avif"} />
+
+    <ViewTransitions />
+    <meta property="og:url" content={url} />
+    <title>{title} - SIMOR</title>
+  </head>
+  <body class="bg-colorBackGround scroll-smooth">
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <ScrollToTopButton client:load />
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "@components/home/Card.astro";
+import { cardContent } from "@constants/cardContent";
+import Title from "@components/shared/Title.astro";
+import Container from "@components/shared/Container.astro";
+import image1 from "@assets/home/imagen_servicio1.avif";
+import image2 from "@assets/home/imagen_servicio2.avif";
+import HeroSwipper from "@components/home/HeroSwipper";
+import { hero } from "@constants/homeSlider";
+
+const images = [image1, image2];
+---
+
+<Layout title="Inicio" url="/">
+  <HeroSwipper slides={hero} client:visible />
+  <Container>
+    <Title title="NUESTROS SERVICIOS" />
+    <div class="flex flex-col items-center justify-center mt-4">
+      <span class="text-slate-800 prose-2xl text-center"
+        >Nuestro centro especializado de verificación ofrece los siguientes
+        servicios:
+      </span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 my-8">
+      {
+        cardContent.map((card, index) => (
+          <Card
+            title={card.title}
+            body={card.body}
+            href={card.href}
+            imageSrc={images[index]}
+          />
+        ))
+      }
+    </div>
+  </Container>
+</Layout>

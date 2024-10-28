@@ -1,0 +1,58 @@
+---
+import { Astronav, MenuIcon, MenuItems, StickyHeader } from "astro-navbar";
+import { rutas } from "@constants/routes";
+
+import Container from "@components/shared/Container.astro";
+import Link from "@components/shared/Link.astro";
+import logo from "@assets/simorLogo.avif";
+import { Image } from "astro:assets";
+---
+
+<StickyHeader
+  class="shadow-md gap-6 z-20 transition-all w-full ease-in-out bg-secondary text-white top-0"
+  scrollY={50}
+>
+  <Container>
+    <Astronav closeOnClick>
+      <div
+        class="flex justify-between items-center flex-col lg:flex-row relative w-full"
+      >
+        <div
+          class="flex w-full lg:w-auto items-center justify-center lg:justify-center"
+        >
+          <a
+            href="/"
+            class="text-xl md:text-2xl text-textColor flex items-center transition-all rounded-full"
+          >
+            <Image
+              alt="logo"
+              src={logo}
+              class="w-32 h-auto"
+              loading={"eager"}
+              quality={"low"}
+              decoding={"async"}
+            />
+          </a>
+          <div class="block lg:hidden ml-4 pt-4">
+            <MenuIcon class="w-8 h-8 text-white" />
+          </div>
+        </div>
+        <MenuItems
+          class="hidden lg:flex lg:items-center lg:w-auto py-10 md:py-0"
+        >
+          <ul
+            class="flex flex-col lg:flex-row lg:gap-2 gap-10 items-center mt-4 md:mt-0"
+          >
+            {rutas.map((ruta) => <Link name={ruta.name} href={ruta.path} />)}
+          </ul>
+        </MenuItems>
+      </div>
+    </Astronav>
+  </Container>
+</StickyHeader>
+
+<style is:global>
+  .astronav-dropdown:hover .dropdown-toggle {
+    display: block;
+  }
+</style>

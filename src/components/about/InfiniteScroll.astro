@@ -1,0 +1,30 @@
+---
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  imageFolder: string;
+}
+
+const imageFiles = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/**/*",
+  { eager: true }
+);
+
+const images = Object.entries(imageFiles)
+  .filter(([path]) => path.includes(`/${Astro.props.imageFolder}/`))
+  .map(([_, mod]) => mod.default.src);
+---
+
+<div class="relative flex overflow-x-hidden">
+  <div class="py-12 animate-marquee whitespace-nowrap flex gap-10">
+    {
+      images.map((src, index) => (
+        <img
+          src={src}
+          alt={` ${index + 1}`}
+          class="h-40 w-auto object-cover rounded-lg"
+        />
+      ))
+    }
+  </div>
+</div>
